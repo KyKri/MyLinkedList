@@ -6,13 +6,13 @@ MyLinkedList
 I was revisiting my data structures and algorithms for an 
 interview and decided why not put it on github while I was at it!
 Notes: 
-- this is a singly linked list
+- This is a singly linked list
 - I did not use a formal testing framework like JUnit due to time
 restrictions for studying (I may update that later though)
 
-I inlcuded in the comments mytime complexity analyses, 
+I inlcuded in the comments my time complexity analyses, 
 and was surprised at how many operations
-could be done in O(1) time, though some methods see improvement from
+could be done in O(1) time, with some methods seeing improvement from
 use of pointer nodes (like tail) as their brute force implementations
 yielded O(n).
 
