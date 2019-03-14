@@ -163,6 +163,18 @@ public class MyLinkedList<E> {
     }
 
     /**
+     * Returns true if the specified element is in the list. Returns false otherwise.
+     * Time complexity analysis: O(n)
+     * 
+     * @param E Object to try to find
+     * @return  Returns true if object is found, false otherwise
+     */
+    public boolean find(E obj) {
+        // Stubbed out method
+        return false;
+    }
+
+    /**
      * Returns the currentSize of the linked list. Time complexity analysis: O(1)
      * 
      * @return The currentSize
