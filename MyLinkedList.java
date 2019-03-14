@@ -2,8 +2,11 @@ package mylinkedlist;
 
 public class MyLinkedList<E> {
     /**
-     * Node subclass of MyLinkedList that stores a pointer to another node and some generic datatype E
-     * @param <E> Generic datatype that indicates what the node's data property will store
+     * Node subclass of MyLinkedList that stores a pointer to another node and some
+     * generic datatype E
+     * 
+     * @param <E> Generic datatype that indicates what the node's data property will
+     *            store
      */
     class Node<E> {
         E data;
@@ -11,6 +14,7 @@ public class MyLinkedList<E> {
 
         /**
          * Constructs a new node
+         * 
          * @param obj Generic object that the node will store
          */
         public Node(E obj) {
@@ -32,10 +36,11 @@ public class MyLinkedList<E> {
     }
 
     /**
-     * Adds the specified object to the beginning of the linked list
-     * and increments the currentSize by 1.
+     * Adds the specified object to the beginning of the linked list and increments
+     * the currentSize by 1.
      * <p>
      * Time complexity analysis: O(1)
+     * 
      * @param obj
      */
     public void addFirst(E obj) {
@@ -50,14 +55,14 @@ public class MyLinkedList<E> {
     }
 
     /**
-     * Adds the specified object to the end of the linked list and increments
-     * the currentSize by 1.
-     * Time complexity analysis: O(1)
+     * Adds the specified object to the end of the linked list and increments the
+     * currentSize by 1. Time complexity analysis: O(1)
+     * 
      * @param obj
      */
     public void addLast(E obj) {
         Node<E> node = new Node<E>(obj);
-        
+
         if (head == null) {
             head = tail = node;
         } else {
@@ -68,16 +73,18 @@ public class MyLinkedList<E> {
     }
 
     /**
-     * Removes the first element in the linked list and decrements the currentSize by 1.
-     * Time complexity analysis: O(1)
-     * @return      The first element in the linked list, or null if the linked list is empty
+     * Removes the first element in the linked list and decrements the currentSize
+     * by 1. Time complexity analysis: O(1)
+     * 
+     * @return The first element in the linked list, or null if the linked list is
+     *         empty
      */
     public E removeFirst() {
         // make sure linked list isn't empty
-        if (head == null){
+        if (head == null) {
             return null;
         }
-        
+
         // declare after head is checked for null so that temp can never be null
         E temp = head.data;
 
@@ -92,9 +99,10 @@ public class MyLinkedList<E> {
     }
 
     /**
-     * Removes and returns the element at the end of the linked list if the list is not empty.
-     * Otherwise returns null if the list is empty.
-     * Time complexity analysis: O(n)
+     * Removes and returns the element at the end of the linked list if the list is
+     * not empty. Otherwise returns null if the list is empty. Time complexity
+     * analysis: O(n)
+     * 
      * @return
      */
     public E removeLast() {
@@ -122,32 +130,26 @@ public class MyLinkedList<E> {
     }
 
     /**
-     * Removes and returns the specified element from the linked list
-     * if it is in the linked list and decrements the current size by 1.
-     * Otherwise returns null if the list is empty or element not in list.
-     * Time complexity analysis: O(n)
+     * Removes and returns the specified element from the linked list if it is in
+     * the linked list and decrements the current size by 1. Otherwise returns null
+     * if the list is empty or element not in list. Time complexity analysis: O(n)
+     * 
      * @param obj Element to remove
-     * @return      Specified element or null if the element is not in the linked list
+     * @return Specified element or null if the element is not in the linked list
      */
     public E remove(E obj) {
-        // If LinkedList is empty, return null, E can't be in the linked list
-        if (head == null) {
-            return null;
-        }
-        // Re-used code for single item removal
-        if (head == tail) {
-            return removeFirst();
-        }
-        // Re-used code for removing the first item
-        if (((Comparable<E>)head.data).compareTo(obj) == 0) {
-            return removeFirst();
-        }
-
-        // Variables declared after basic boundary checks to save time and memory
         Node<E> previous = null, current = head;
 
-        while (current != tail) {
-            if (((Comparable<E>)current.data).compareTo(obj) == 0) {
+        while (current != null) {
+            if (((Comparable<E>) current.data).compareTo(obj) == 0) {
+                // Re-used code for single item and first item removal
+                if (current == head) {
+                    return removeFirst();
+                }
+                // Re-used code for returning last item
+                if (current == tail) {
+                    return removeLast();
+                }
                 previous.next = current.next;
                 currentSize--;
                 return current.data;
@@ -156,21 +158,16 @@ public class MyLinkedList<E> {
             current = current.next;
         }
 
-        // Re-used code to handle removal of last element
-        if (((Comparable<E>)current.data).compareTo(obj) == 0) {
-            return removeLast();
-        }
-
         // Specified element was not found in the linked list
         return null;
     }
 
     /**
-     * Returns the currentSize of the linked list.
-     * Time complexity analysis: O(1)
-     * @return     The currentSize 
+     * Returns the currentSize of the linked list. Time complexity analysis: O(1)
+     * 
+     * @return The currentSize
      */
-    public int getCurrentSize(){ 
+    public int getCurrentSize() {
         return currentSize;
     }
 }
