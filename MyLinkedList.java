@@ -198,6 +198,19 @@ public class MyLinkedList<E> {
     }
 
     /**
+     * Returns the last element in the list, or null if the list is empty.
+     * Time complexity analysis: O(1)
+     * 
+     * @return  Returns last element, or null if list is empty.
+     */
+    public E peekLast() {
+        if (tail == null) {
+            return null;
+        }
+        return tail.data;
+    }
+
+    /**
      * Returns the currentSize of the linked list. Time complexity analysis: O(1)
      * 
      * @return The currentSize
