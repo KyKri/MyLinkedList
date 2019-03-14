@@ -185,6 +185,19 @@ public class MyLinkedList<E> {
     }
 
     /**
+     * Returns the first element in the list, or null if the list is empty.
+     * Time complexity analysis: O(1)
+     * 
+     * @return  Returns first element, or null if list is empty.
+     */
+    public E peekFirst() {
+        if (head == null) {
+            return null;
+        }
+        return head.data;
+    }
+
+    /**
      * Returns the currentSize of the linked list. Time complexity analysis: O(1)
      * 
      * @return The currentSize
