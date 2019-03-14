@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LinkedListTester",
+            "request": "launch",
+            "mainClass": "mylinkedlist.LinkedListTester"
+        }
+    ]
+}
