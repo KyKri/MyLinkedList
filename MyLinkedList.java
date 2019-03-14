@@ -170,7 +170,17 @@ public class MyLinkedList<E> {
      * @return  Returns true if object is found, false otherwise
      */
     public boolean find(E obj) {
-        // Stubbed out method
+        Node<E> current = head;
+
+        // Iterate down the list and look for the element
+        while (current != null) {
+            if (((Comparable<E>) current.data).compareTo(obj) == 0) {
+                return true;
+            }
+            current = current.next;
+        }
+
+        // Specified element was not found in the linked list
         return false;
     }
 
