@@ -124,12 +124,44 @@ public class MyLinkedList<E> {
     /**
      * Removes and returns the specified element from the linked list
      * if it is in the linked list and decrements the current size by 1.
-     * Otherwise returns null if the list is empty.
+     * Otherwise returns null if the list is empty or element not in list.
      * Time complexity analysis: O(n)
      * @param obj Element to remove
      * @return      Specified element or null if the element is not in the linked list
      */
     public E remove(E obj) {
+        // If LinkedList is empty, return null, E can't be in the linked list
+        if (head == null) {
+            return null;
+        }
+        // Re-used code for single item removal
+        if (head == tail) {
+            return removeFirst();
+        }
+        // Re-used code for removing the first item
+        if (((Comparable<E>)head.data).compareTo(obj) == 0) {
+            return removeFirst();
+        }
+
+        // Variables declared after basic boundary checks to save time and memory
+        Node<E> previous = null, current = head;
+
+        while (current != tail) {
+            if (((Comparable<E>)current.data).compareTo(obj) == 0) {
+                previous.next = current.next;
+                currentSize--;
+                return current.data;
+            }
+            previous = current;
+            current = current.next;
+        }
+
+        // Re-used code to handle removal of last element
+        if (((Comparable<E>)current.data).compareTo(obj) == 0) {
+            return removeLast();
+        }
+
+        // Specified element was not found in the linked list
         return null;
     }
 
